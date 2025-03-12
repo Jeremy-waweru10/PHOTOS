@@ -7,15 +7,15 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: #f5f5f5;
-    color: #333;
+    background: skyblue;
+    color:lightseagreen;
 }
 
 /* Header and Navigation */
 header {
-    background: #333;
+    background: black;
     color: white;
-    padding: 1rem;
+    padding: 20px;
     text-align: center;
 }
 
@@ -39,33 +39,38 @@ nav ul li a {
 
 /* Photo Gallery using Grid */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    display: flex;
+    flex-direction: column;/*Vertical alignment*/
+    gap: 20px;/*Spacing between photo container*/
     padding: 20px;
 }
 
-/* Individual Photo using Flexbox */
+/* Photo - Image Left, Text Right */
 .photo {
-    display: flex;
-    flex-direction: column;
+    display: flex; /*Side by side alignment*/
     align-items: center;
     background: white;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    gap: 20px;
 }
 
+/* Image Styling (Left Side) */
 .photo img {
-    width: 100%;
+    width: 300px;
     height: auto;
     border-radius: 8px;
+    order: 0; /*Image on left*/
 }
 
+/* Text Styling (Right Side) */
 .photo p {
     margin-top: 10px;
     font-size: 1rem;
     color: #555;
+    flex: 1; /*Fill remaining space*/
+    order: 1; /* Text on the right */
 }
 
 /* Responsive Design */
@@ -79,6 +84,7 @@ nav ul li a {
         align-items: center;
     }
 }
+
 
 /* Footer */
 footer {

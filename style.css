@@ -8,7 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background: skyblue;
-    color:lightseagreen;
+    color: lightseagreen;
 }
 
 /* Header and Navigation */
@@ -27,6 +27,7 @@ nav ul {
     margin-top: 10px;
 }
 
+/* Navbar Links */
 nav ul li {
     display: inline;
 }
@@ -35,25 +36,50 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-size: 1.2rem;
+    transition: color 0.3s ease; /* Smooth color change */
+    position: relative; /* Required for underline animation */
 }
 
-/* Photo Gallery using Grid */
+/* Hover Effect: Change Color + Underline Animation */
+nav ul li a:hover {
+    color: crimson; /* Change link color */
+}
+
+/* Underline Effect on Hover */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Distance of underline */
+    width: 100%;
+    height: 2px; /* Thickness of underline */
+    background: crimson; /* Underline color */
+    transform: scaleX(0); /* Hidden initially */
+    transition: transform 0.3s ease; /* Smooth animation */
+}
+
+nav ul li a:hover::after {
+    transform: scaleX(1); /* Expand underline */
+}
+
+/* Photo Gallery using Flexbox */
 .gallery {
     display: flex;
-    flex-direction: column;/*Vertical alignment*/
-    gap: 20px;/*Spacing between photo container*/
+    flex-direction: column; /* Vertical alignment */
+    gap: 20px; /* Spacing between photo container */
     padding: 20px;
 }
 
 /* Photo - Image Left, Text Right */
 .photo {
-    display: flex; /*Side by side alignment*/
+    display: flex; /* Side by side alignment */
     align-items: center;
     background: white;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     gap: 20px;
+    overflow: hidden; /* Prevent image overflow during zoom */
 }
 
 /* Image Styling (Left Side) */
@@ -61,7 +87,13 @@ nav ul li a {
     width: 300px;
     height: auto;
     border-radius: 8px;
-    order: 0; /*Image on left*/
+    order: 0; /* Image on left */
+    transition: transform 0.5s ease; /* Smooth zoom effect */
+}
+
+/* Hover Effect: Image Zoom */
+.photo:hover img {
+    transform: scale(1.1); /* Slight zoom-in effect */
 }
 
 /* Text Styling (Right Side) */
@@ -69,7 +101,7 @@ nav ul li a {
     margin-top: 10px;
     font-size: 1rem;
     color: #555;
-    flex: 1; /*Fill remaining space*/
+    flex: 1; /* Fill remaining space */
     order: 1; /* Text on the right */
 }
 
@@ -83,8 +115,12 @@ nav ul li a {
         flex-direction: column;
         align-items: center;
     }
-}
 
+    .photo {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center; /* Center-align text */
+    }
+}
 
 /* Footer */
 footer {
@@ -94,6 +130,3 @@ footer {
     padding: 1rem;
     margin-top: 20px;
 }
-
-
-
